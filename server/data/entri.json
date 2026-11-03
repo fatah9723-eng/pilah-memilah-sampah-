@@ -1,0 +1,56 @@
+[
+  {
+    "id": "e_1",
+    "penggunaId": "u_burani123",
+    "tanggal": "2026-11-03",
+    "jenis": "organik",
+    "beratKg": 1.2,
+    "catatan": "Kulit salak & sisa sayuran bayam",
+    "dibuatPada": "2026-11-03T12:50:16.363Z"
+  },
+  {
+    "id": "e_2",
+    "penggunaId": "u_burani123",
+    "tanggal": "2026-11-02",
+    "jenis": "plastik",
+    "beratKg": 0.8,
+    "catatan": "Botol kecap & gelas air mineral",
+    "dibuatPada": "2026-11-03T12:50:16.363Z"
+  },
+  {
+    "id": "e_3",
+    "penggunaId": "u_burani123",
+    "tanggal": "2026-11-01",
+    "jenis": "kertas",
+    "beratKg": 1.5,
+    "catatan": "Kardus mi instan & amplop berkas",
+    "dibuatPada": "2026-11-03T12:50:16.363Z"
+  },
+  {
+    "id": "e_4",
+    "penggunaId": "u_burani123",
+    "tanggal": "2026-10-31",
+    "jenis": "kacaLogam",
+    "beratKg": 0.7,
+    "catatan": "Kaleng sarden & botol sirup",
+    "dibuatPada": "2026-11-03T12:50:16.363Z"
+  },
+  {
+    "id": "e_5",
+    "penggunaId": "u_burani123",
+    "tanggal": "2026-10-29",
+    "jenis": "organik",
+    "beratKg": 0.9,
+    "catatan": "Kulit pisang & daun kering halaman",
+    "dibuatPada": "2026-11-03T12:50:16.363Z"
+  },
+  {
+    "id": "e_2f69f168a4109389",
+    "penggunaId": "u_burani123",
+    "jenis": "organik",
+    "beratKg": 400,
+    "tanggal": "2026-11-03",
+    "catatan": "",
+    "dibuatPada": "2026-11-03T14:28:00.146Z"
+  }
+]

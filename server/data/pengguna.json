@@ -1,0 +1,11 @@
+[
+  {
+    "id": "u_burani123",
+    "nama": "NOTFatah",
+    "email": "burani@contoh.id",
+    "salt": "1b492ec38baea750935eb5b71d0d447a",
+    "hashKataSandi": "9ab5fe304575e1130bc0e45572a31777f58967676647f7aa22e64bdbf4d5251318bd1e5f137191d11457d2daac128bf4af8caf74c1f6ae1b89fecc6c61198534",
+    "targetMingguKg": 7.5,
+    "dibuatPada": "2026-11-03T12:50:16.361Z"
+  }
+]

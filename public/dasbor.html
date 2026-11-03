@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dasbor Saya | Pilah</title>
+  <meta name="description" content="Dasbor pencatatan sampah rumah tangga dan progres target mingguan.">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/komponen.css">
+</head>
+<body>
+  <!-- Header & Navigasi -->
+  <header class="nav-utama">
+    <div class="wadah nav-konten">
+      <a href="/dasbor.html" class="nav-merek" aria-label="Dasbor Pilah">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <span>Pilah</span>
+      </a>
+
+      <nav aria-label="Navigasi aplikasi">
+        <ul class="nav-tautan">
+          <li><a href="/dasbor.html" class="aktif" aria-current="page">Dasbor</a></li>
+          <li><a href="/panduan.html">Panduan Memilah</a></li>
+          <li><a href="/profil.html">Profil</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-aksi">
+        <button id="btn-ganti-tema" class="btn-ikon" type="button" aria-label="Ganti mode tema"></button>
+        <button id="btn-keluar-nav" class="btn btn-garis btn-sm" type="button" aria-label="Keluar dari akun">
+          Keluar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wadah" style="padding-top: var(--s5); padding-bottom: var(--s7);">
+    <!-- Salam Pengguna -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: var(--s3); margin-bottom: var(--s4);">
+      <div>
+        <h1 style="margin-bottom: 4px; font-size: clamp(1.75rem, 4vw, 2.5rem);">Buku Catatan, <span id="nama-pengguna-dasbor">Keluarga</span></h1>
+        <p class="teks-tinta-pudar" style="font-size: 0.95rem;">
+          Pantau setoran sampah rumah tangga dan kejar target mingguan Anda.
+        </p>
+      </div>
+    </div>
+
+    <!-- TATA LETAK ASIMETRIS DASBOR -->
+    <div class="dasbor-grid">
+      <!-- KOLOM KIRI: FORM CATAT SETORAN & DAFTAR RIWAYAT -->
+      <section class="dasbor-kiri" aria-labelledby="judul-catat-sampah">
+        <!-- FORM CATAT SETORAN LANGSUNG -->
+        <div class="kartu">
+          <h2 id="judul-catat-sampah" class="kartu-judul" style="margin-bottom: var(--s3);">
+            Catat Setoran Sampah
+          </h2>
+
+          <form id="form-tambah-entri" novalidate>
+            <!-- 1. Pilihan Jenis Sampah (Radio Grid dengan Titik Warna) -->
+            <fieldset class="grup-form" style="border:none; padding:0; margin-bottom:var(--s4);">
+              <legend style="font-size: 0.9rem; font-weight: 600; color: var(--tinta); margin-bottom: 8px;">
+                Jenis Sampah <span class="teks-bata">*</span>
+              </legend>
+              <div class="grid-jenis-sampah">
+                <div class="opsi-jenis">
+                  <input type="radio" id="jenis-organik" name="jenis" value="organik" required checked>
+                  <label for="jenis-organik">
+                    <span class="titik-warna titik-organik"></span>
+                    <span>Organik</span>
+                  </label>
+                </div>
+                <div class="opsi-jenis">
+                  <input type="radio" id="jenis-plastik" name="jenis" value="plastik">
+                  <label for="jenis-plastik">
+                    <span class="titik-warna titik-plastik"></span>
+                    <span>Plastik</span>
+                  </label>
+                </div>
+                <div class="opsi-jenis">
+                  <input type="radio" id="jenis-kertas" name="jenis" value="kertas">
+                  <label for="jenis-kertas">
+                    <span class="titik-warna titik-kertas"></span>
+                    <span>Kertas</span>
+                  </label>
+                </div>
+                <div class="opsi-jenis">
+                  <input type="radio" id="jenis-kacaLogam" name="jenis" value="kacaLogam">
+                  <label for="jenis-kacaLogam">
+                    <span class="titik-warna titik-kacaLogam"></span>
+                    <span>Kaca & Logam</span>
+                  </label>
+                </div>
+                <div class="opsi-jenis w-b3-grid">
+                  <input type="radio" id="jenis-b3" name="jenis" value="b3">
+                  <label for="jenis-b3">
+                    <span class="titik-warna titik-b3"></span>
+                    <span>B3 (Berbahaya)</span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- 2. Berat & Tanggal (2 Kolom) -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3);">
+              <div class="grup-form">
+                <label for="input-berat">Berat (kg) <span class="teks-bata">*</span></label>
+                <input type="number" id="input-berat" class="kontrol-input angka-mono" placeholder="0.8" step="0.1" min="0.05" max="500" required>
+              </div>
+              <div class="grup-form">
+                <label for="input-tanggal">Tanggal <span class="teks-bata">*</span></label>
+                <input type="date" id="input-tanggal" class="kontrol-input" required>
+              </div>
+            </div>
+
+            <!-- 3. Catatan Opsional -->
+            <div class="grup-form">
+              <label for="input-catatan">Catatan Barang (Opsional)</label>
+              <input type="text" id="input-catatan" class="kontrol-input" placeholder="Contoh: Kardus mi instan & botol kecap" maxlength="200">
+            </div>
+
+            <div id="galat-form-entri" class="pesan-galat" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn-aksen lebar-penuh" style="margin-top: var(--s2);">
+              Simpan catatan
+            </button>
+          </form>
+        </div>
+
+        <!-- DAFTAR RIWAYAT CATATAN -->
+        <div class="kartu">
+          <div class="kartu-header">
+            <h2 class="kartu-judul">Riwayat Catatan Anda</h2>
+            <span class="teks-tinta-pudar" style="font-size: 0.85rem;">Terbaru di atas</span>
+          </div>
+
+          <!-- Keadaan Kosong (PRD: Belum ada catatan minggu ini. Catat yang pertama.) -->
+          <div id="keadaan-kosong-dasbor" class="keadaan-kosong" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+            <h3>Belum ada catatan minggu ini.</h3>
+            <p>Catat yang pertama lewat formulir di atas untuk melihat progres pemilahan Anda.</p>
+          </div>
+
+          <!-- Daftar Entri -->
+          <ul id="wadah-daftar-entri" class="daftar-entri" aria-label="Daftar setoran sampah"></ul>
+        </div>
+      </section>
+
+      <!-- KOLOM KANAN: TANTANGAN MINGGUAN, RINGKASAN & GRAFIK 7 HARI -->
+      <aside class="dasbor-kanan" aria-labelledby="judul-progres-mingguan">
+        <!-- 1. TANTANGAN MINGGUAN -->
+        <div class="kartu">
+          <div class="kartu-header" style="margin-bottom: var(--s3);">
+            <h2 id="judul-progres-mingguan" class="kartu-judul">Tantangan Minggu Ini</h2>
+            <a href="/profil.html" style="font-size: 0.85rem; text-decoration: none; font-weight: 600;">Atur Target</a>
+          </div>
+
+          <div class="cincin-wadah">
+            <svg class="cincin-svg" viewBox="0 0 100 100" role="img" aria-label="Cincin progres target mingguan">
+              <circle class="cincin-latar" cx="50" cy="50" r="40" />
+              <circle id="cincin-progres-bar" class="cincin-progres" cx="50" cy="50" r="40" stroke-dasharray="251.32 251.32" stroke-dashoffset="251.32" />
+            </svg>
+            <div class="cincin-info">
+              <span class="cincin-angka" id="total-minggu-ini">0.0 kg</span>
+              <span class="teks-tinta-pudar" style="font-size: 0.85rem;">Target: <strong id="target-kg-teks" style="color:var(--tinta);">5 kg</strong></span>
+              <span id="selisih-minggu" class="ringkasan-selisih">-</span>
+            </div>
+          </div>
+
+          <div id="pesan-target-wadah"></div>
+        </div>
+
+        <!-- 2. GRAFIK BATANG 7 HARI -->
+        <div class="kartu">
+          <div class="kartu-header" style="margin-bottom: var(--s2);">
+            <h2 class="kartu-judul">Grafik 7 Hari Terakhir</h2>
+            <span class="teks-tinta-pudar" style="font-size: 0.8rem;">Sentuh / hover untuk detail</span>
+          </div>
+
+          <div id="wadah-grafik-dasbor" class="wadah-grafik"></div>
+        </div>
+
+        <!-- 3. RINCIAN PER KATEGORI SAMPAH MINGGU INI -->
+        <div class="kartu">
+          <h2 class="kartu-judul" style="margin-bottom: var(--s3);">Rincian Kategori Minggu Ini</h2>
+          <div style="display: flex; flex-direction: column; gap: var(--s2);">
+            <div class="rincian-baris">
+              <span style="display:flex; align-items:center; font-size:0.95rem;">
+                <span class="titik-rincian titik-organik"></span>
+                Organik
+              </span>
+              <span id="rincian-organik" class="angka-mono" style="font-weight:700;">0.0 kg</span>
+            </div>
+            <div class="rincian-baris">
+              <span style="display:flex; align-items:center; font-size:0.95rem;">
+                <span class="titik-rincian titik-plastik"></span>
+                Plastik
+              </span>
+              <span id="rincian-plastik" class="angka-mono" style="font-weight:700;">0.0 kg</span>
+            </div>
+            <div class="rincian-baris">
+              <span style="display:flex; align-items:center; font-size:0.95rem;">
+                <span class="titik-rincian titik-kertas"></span>
+                Kertas
+              </span>
+              <span id="rincian-kertas" class="angka-mono" style="font-weight:700;">0.0 kg</span>
+            </div>
+            <div class="rincian-baris">
+              <span style="display:flex; align-items:center; font-size:0.95rem;">
+                <span class="titik-rincian titik-kacaLogam"></span>
+                Kaca & Logam
+              </span>
+              <span id="rincian-kacaLogam" class="angka-mono" style="font-weight:700;">0.0 kg</span>
+            </div>
+            <div class="rincian-baris">
+              <span style="display:flex; align-items:center; font-size:0.95rem;">
+                <span class="titik-rincian titik-b3"></span>
+                B3 (Berbahaya)
+              </span>
+              <span id="rincian-b3" class="angka-mono" style="font-weight:700;">0.0 kg</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- MODAL EDIT ENTRI -->
+  <div id="dialog-edit-entri" class="dialog-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="judul-modal-edit">
+    <div class="dialog-konten">
+      <h3 id="judul-modal-edit" style="font-size: 1.35rem; margin-bottom: var(--s4);">Ubah Catatan Setoran</h3>
+      <form id="form-edit-entri">
+        <input type="hidden" id="edit-id">
+
+        <fieldset class="grup-form" style="border:none; padding:0; margin-bottom:var(--s4);">
+          <legend style="font-size:0.9rem; font-weight:600; margin-bottom:6px;">Jenis Sampah</legend>
+          <div class="grid-jenis-sampah">
+            <div class="opsi-jenis">
+              <input type="radio" id="edit-organik" name="edit-jenis" value="organik">
+              <label for="edit-organik">Organik</label>
+            </div>
+            <div class="opsi-jenis">
+              <input type="radio" id="edit-plastik" name="edit-jenis" value="plastik">
+              <label for="edit-plastik">Plastik</label>
+            </div>
+            <div class="opsi-jenis">
+              <input type="radio" id="edit-kertas" name="edit-jenis" value="kertas">
+              <label for="edit-kertas">Kertas</label>
+            </div>
+            <div class="opsi-jenis">
+              <input type="radio" id="edit-kacaLogam" name="edit-jenis" value="kacaLogam">
+              <label for="edit-kacaLogam">Kaca/Logam</label>
+            </div>
+            <div class="opsi-jenis w-b3-grid">
+              <input type="radio" id="edit-b3" name="edit-jenis" value="b3">
+              <label for="edit-b3">B3 (Berbahaya)</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3);">
+          <div class="grup-form">
+            <label for="edit-berat">Berat (kg)</label>
+            <input type="number" id="edit-berat" class="kontrol-input angka-mono" step="0.1" min="0.05" required>
+          </div>
+          <div class="grup-form">
+            <label for="edit-tanggal">Tanggal</label>
+            <input type="date" id="edit-tanggal" class="kontrol-input" required>
+          </div>
+        </div>
+
+        <div class="grup-form">
+          <label for="edit-catatan">Catatan</label>
+          <input type="text" id="edit-catatan" class="kontrol-input" maxlength="200">
+        </div>
+
+        <div class="dialog-aksi">
+          <button type="button" id="btn-batal-edit" class="btn btn-garis">Batal</button>
+          <button type="submit" class="btn btn-primer">Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- WADAH TOAST NOTIFIKASI UNDO -->
+  <div id="wadah-toast" class="wadah-toast" aria-live="polite"></div>
+
+  <footer class="footer-utama">
+    <div class="wadah">
+      <p>Pilah — Pencatat Sampah Rumah Tangga &bull; Murni HTML, CSS, JavaScript &bull; 2026</p>
+    </div>
+  </footer>
+
+  <script src="/js/tema.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/grafik.js"></script>
+  <script src="/js/dasbor.js"></script>
+</body>
+</html>

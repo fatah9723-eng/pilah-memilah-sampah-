@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil & Pengaturan | Pilah</title>
+  <meta name="description" content="Kelola akun, target mingguan, dan kata sandi di Pilah.">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/komponen.css">
+</head>
+<body>
+  <!-- Header & Navigasi -->
+  <header class="nav-utama">
+    <div class="wadah nav-konten">
+      <a href="/dasbor.html" class="nav-merek" aria-label="Dasbor Pilah">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <span>Pilah</span>
+      </a>
+
+      <nav aria-label="Navigasi aplikasi">
+        <ul class="nav-tautan">
+          <li><a href="/dasbor.html">Dasbor</a></li>
+          <li><a href="/panduan.html">Panduan Memilah</a></li>
+          <li><a href="/profil.html" class="aktif" aria-current="page">Profil</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-aksi">
+        <button id="btn-ganti-tema" class="btn-ikon" type="button" aria-label="Ganti mode tema"></button>
+        <button id="btn-keluar-nav" class="btn btn-garis btn-sm" type="button" aria-label="Keluar dari akun">
+          Keluar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wadah" style="padding-top: var(--s5); padding-bottom: var(--s7); max-width: 720px;">
+    <div style="margin-bottom: var(--s5);">
+      <h1 style="font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 6px;">Profil & Pengaturan</h1>
+      <p class="teks-tinta-pudar" style="font-size: 0.95rem;">
+        Sesuaikan nama tampilan, target setoran mingguan, atau ubah kata sandi Anda.
+      </p>
+    </div>
+
+    <!-- 1. FORM DATA PROFIL & TARGET MINGGUAN -->
+    <div class="kartu" style="margin-bottom: var(--s5);">
+      <h2 class="kartu-judul" style="margin-bottom: var(--s4);">Informasi Akun & Target</h2>
+
+      <form id="form-profil" novalidate>
+        <div class="grup-form">
+          <label for="profil-email">Alamat Email (Akun)</label>
+          <input type="email" id="profil-email" class="kontrol-input" readonly disabled style="opacity: 0.8;">
+          <span class="pesan-petunjuk">Email akun tidak dapat diubah.</span>
+        </div>
+
+        <div class="grup-form">
+          <label for="profil-nama">Nama Tampilan</label>
+          <input type="text" id="profil-nama" class="kontrol-input" required minlength="2" maxlength="50">
+          <div id="galat-profil-nama" class="pesan-galat"></div>
+        </div>
+
+        <div class="grup-form">
+          <label for="profil-target">Target Setoran Mingguan (kg)</label>
+          <input type="number" id="profil-target" class="kontrol-input angka-mono" step="0.5" min="0.5" max="100" required>
+          <span class="pesan-petunjuk">Target awal disarankan 5 kg per minggu untuk satu rumah tangga.</span>
+          <div id="galat-profil-target" class="pesan-galat"></div>
+        </div>
+
+        <div id="status-profil" style="margin-bottom: var(--s3); font-size: 0.9rem; font-weight: 600;"></div>
+
+        <button type="submit" class="btn btn-primer">
+          Simpan Profil & Target
+        </button>
+      </form>
+    </div>
+
+    <!-- 2. FORM GANTI KATA SANDI -->
+    <div class="kartu" style="margin-bottom: var(--s5);">
+      <h2 class="kartu-judul" style="margin-bottom: var(--s4);">Ganti Kata Sandi</h2>
+
+      <form id="form-sandi" novalidate>
+        <div class="grup-form">
+          <label for="sandi-lama">Kata Sandi Saat Ini</label>
+          <input type="password" id="sandi-lama" class="kontrol-input" required>
+        </div>
+
+        <div class="grup-form">
+          <label for="sandi-baru">Kata Sandi Baru</label>
+          <input type="password" id="sandi-baru" class="kontrol-input" placeholder="Minimal 8 karakter kombinasi huruf & angka" required minlength="8">
+          <span class="pesan-petunjuk">Minimal 8 karakter dengan huruf dan angka.</span>
+        </div>
+
+        <div id="status-sandi" class="pesan-galat" style="margin-bottom: var(--s3); font-weight: 600;"></div>
+
+        <button type="submit" class="btn btn-garis">
+          Perbarui Kata Sandi
+        </button>
+      </form>
+    </div>
+
+    <!-- 3. ZONA BAHAYA (HAPUS AKUN) -->
+    <div class="kartu kartu-zona-bahaya">
+      <h2 class="kartu-judul teks-bata" style="margin-bottom: 6px;">Zona Bahaya</h2>
+      <p class="teks-tinta-pudar" style="font-size: 0.9rem; margin-bottom: var(--s4);">
+        Menghapus akun akan menghapus secara permanen semua data pengguna, riwayat setoran sampah, dan target mingguan dari server. Tindakan ini tidak dapat dibatalkan.
+      </p>
+
+      <button type="button" id="btn-buka-hapus-akun" class="btn btn-bahaya">
+        Hapus Akun dan Semua Catatan
+      </button>
+    </div>
+  </main>
+
+  <!-- MODAL KONFIRMASI HAPUS AKUN -->
+  <div id="dialog-hapus-akun" class="dialog-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="judul-hapus-akun">
+    <div class="dialog-konten dialog-konten-bahaya">
+      <h3 id="judul-hapus-akun" class="teks-bata" style="font-size: 1.35rem; margin-bottom: var(--s3);">
+        Konfirmasi Hapus Akun
+      </h3>
+      <p style="color: var(--tinta); margin-bottom: var(--s4); font-size: 0.95rem;">
+        Apakah Anda benar-benar yakin ingin menghapus akun Anda? Semua catatan setoran sampah yang pernah Anda simpan akan dihapus selamanya.
+      </p>
+      <div class="dialog-aksi">
+        <button type="button" id="btn-batal-hapus" class="btn btn-garis">Batal</button>
+        <button type="button" id="btn-konfirmasi-hapus" class="btn btn-konfirmasi-bahaya">
+          Ya, Hapus Akun Saya
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="wadah-toast" class="wadah-toast" aria-live="polite"></div>
+
+  <footer class="footer-utama">
+    <div class="wadah">
+      <p>Pilah — Pencatat Sampah Rumah Tangga &bull; Murni HTML, CSS, JavaScript &bull; 2026</p>
+    </div>
+  </footer>
+
+  <script src="/js/tema.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/profil.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+:root {
+  /* Palet netral dengan aksen hijau yang tegas */
+  --kertas: #F4F6F2;
+  --kertas-tebal: #E8EEE9;
+  --serat: #D4DED6;
+  --tinta: #1D2A24;
+  --tinta-pudar: #59685F;
+  --lumut: #245B46;
+  --lumut-tua: #194735;
+  --terakota: #B95332;
+  --kunyit: #C58A2B;
+  --bata: #A33B32;
+
+  /* Warna per jenis sampah */
+  --warna-organik: #4F7C50;
+  --warna-plastik: #347489;
+  --warna-kertas: #A97935;
+  --warna-kacaLogam: #66737D;
+  --warna-b3: #A9433A;
+
+  /* Tipografi sistem (tanpa Google Fonts) */
+  --font-judul: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-isi: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-angka: ui-monospace, "SF Mono", Consolas, monospace;
+
+  /* Skala Spasi Tetap */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 40px;
+  --s7: 64px;
+
+  /* Sudut */
+  --radius: 6px;
+  --focus-outline: 2px solid var(--kunyit);
+}
+
+/* Mode Gelap (WCAG AA kontras terjaga) */
+[data-tema="dark"] {
+  --kertas: #151D19;
+  --kertas-tebal: #202B25;
+  --serat: #34443A;
+  --tinta: #E8EEE9;
+  --tinta-pudar: #A7B4AA;
+  --lumut: #83B498;
+  --lumut-tua: #A3CBB0;
+  --terakota: #E07A56;
+  --kunyit: #E1B05D;
+  --bata: #E17B70;
+
+  --warna-organik: #83B481;
+  --warna-plastik: #70AFC1;
+  --warna-kertas: #D6B477;
+  --warna-kacaLogam: #A0ABB3;
+  --warna-b3: #D77970;
+}

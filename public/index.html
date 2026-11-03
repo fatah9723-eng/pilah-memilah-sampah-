@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilah — Pencatat Sampah Rumah Tangga</title>
+  <meta name="description" content="Website full stack untuk mencatat sampah rumah tangga yang sudah dipilah, lengkap dengan grafik mingguan, target personal, dan panduan memilah.">
+  <meta property="og:title" content="Pilah — Pencatat Sampah Rumah Tangga">
+  <meta property="og:description" content="Website full stack untuk mencatat sampah rumah tangga yang sudah dipilah, lengkap dengan grafik mingguan, target personal, dan panduan memilah.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/komponen.css">
+</head>
+<body>
+  <header class="nav-utama">
+    <div class="wadah nav-konten">
+      <a href="/" class="nav-merek" aria-label="Beranda Pilah">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <span>Pilah</span>
+      </a>
+
+      <nav aria-label="Navigasi situs">
+        <ul class="nav-tautan">
+          <li><a href="/panduan.html">Panduan Memilah</a></li>
+          <li><a href="/masuk.html">Masuk</a></li>
+          <li><a href="/daftar.html" class="btn btn-aksen btn-sm">Daftar Akun</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-aksi">
+        <button id="btn-ganti-tema" class="btn-ikon" type="button" aria-label="Ganti mode tema"></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wadah hero-section">
+      <div class="hero-copy">
+        <div class="badge-hero"><span>Catatan sampah untuk rumah</span></div>
+        <h1>Pilah lebih mudah. Lihat perubahan setiap minggu.</h1>
+        <p class="teks-hero-deskripsi">
+          Catat sampah yang sudah dipilah, pantau progres keluarga, dan cari tahu cara membuang barang dengan benar—semua dalam satu tempat.
+        </p>
+
+        <div class="wadah-hero-tombol">
+          <a href="/daftar.html" class="btn btn-aksen btn-hero-utama">Mulai gratis</a>
+          <a href="/panduan.html" class="btn btn-garis btn-hero-utama">Cari panduan sampah</a>
+        </div>
+
+        <div class="wadah-hero-statistik" aria-label="Ringkasan fitur Pilah">
+          <div><span class="angka-hero-stat">15 detik</span><span class="label-hero-stat">untuk mencatat</span></div>
+          <div><span class="angka-hero-stat">5 jenis</span><span class="label-hero-stat">sampah rumah</span></div>
+          <div><span class="angka-hero-stat">Pribadi</span><span class="label-hero-stat">data milik Anda</span></div>
+        </div>
+      </div>
+
+      <section class="demo-pilah" aria-labelledby="judul-demo-pilah">
+        <div class="demo-pilah-header">
+          <div>
+            <span class="demo-kicker">Coba langsung</span>
+            <h2 id="judul-demo-pilah">Kenali jenis sampah</h2>
+          </div>
+          <span class="demo-3d-label">Tampilan interaktif</span>
+        </div>
+        <div class="demo-panggung" id="demo-panggung" aria-label="Ilustrasi tempat sampah tiga dimensi">
+          <div class="demo-lantai" aria-hidden="true"></div>
+          <div class="demo-tempat-sampah">
+            <div class="demo-bin" data-jenis="organik">
+              <span class="demo-bin-tutup"></span><span class="demo-bin-depan">Organik</span><span class="demo-bin-samping"></span>
+            </div>
+            <div class="demo-bin" data-jenis="plastik">
+              <span class="demo-bin-tutup"></span><span class="demo-bin-depan">Plastik</span><span class="demo-bin-samping"></span>
+            </div>
+            <div class="demo-bin" data-jenis="kertas">
+              <span class="demo-bin-tutup"></span><span class="demo-bin-depan">Kertas</span><span class="demo-bin-samping"></span>
+            </div>
+            <div class="demo-bin" data-jenis="kacaLogam">
+              <span class="demo-bin-tutup"></span><span class="demo-bin-depan">Kaca</span><span class="demo-bin-samping"></span>
+            </div>
+            <div class="demo-bin" data-jenis="b3">
+              <span class="demo-bin-tutup"></span><span class="demo-bin-depan">B3</span><span class="demo-bin-samping"></span>
+            </div>
+          </div>
+        </div>
+        <div class="demo-kontrol">
+          <div class="pilihan-demo" role="group" aria-label="Pilih kategori sampah">
+            <button type="button" class="pilihan-demo-btn aktif" data-jenis="organik" aria-pressed="true">Organik</button>
+            <button type="button" class="pilihan-demo-btn" data-jenis="plastik" aria-pressed="false">Plastik</button>
+            <button type="button" class="pilihan-demo-btn" data-jenis="kertas" aria-pressed="false">Kertas</button>
+            <button type="button" class="pilihan-demo-btn" data-jenis="kacaLogam" aria-pressed="false">Kaca & logam</button>
+            <button type="button" class="pilihan-demo-btn" data-jenis="b3" aria-pressed="false">B3</button>
+          </div>
+          <p class="demo-keterangan" id="demo-keterangan" aria-live="polite">Sisa sayur dan kulit buah masuk ke sampah organik.</p>
+        </div>
+        <a href="/panduan.html" class="demo-tautan">Buka panduan lengkap <span aria-hidden="true">→</span></a>
+      </section>
+    </section>
+
+    <section class="seksi-fitur-utama">
+      <div class="wadah">
+        <div class="fitur-header">
+          <span class="demo-kicker">Satu aplikasi, lebih teratur</span>
+          <h2>Semua yang dibutuhkan keluarga, tanpa menu yang membingungkan.</h2>
+          <p class="teks-tinta-pudar">Mulai dari catatan sederhana. Pilah akan membantu Anda melihat kebiasaan yang sudah terbentuk.</p>
+        </div>
+
+        <div class="grid-tiga-kolom">
+          <!-- Kartu 1 -->
+          <div class="kartu kartu-latar-kertas">
+            <div class="ikon-fitur-wadah">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <h3 class="kartu-judul-kecil">Catat tanpa ribet</h3>
+            <p class="teks-tinta-pudar">
+              Pilih jenis sampah, masukkan berat, lalu simpan. Catatan harian selesai dalam beberapa detik.
+            </p>
+          </div>
+
+          <!-- Kartu 2 -->
+          <div class="kartu kartu-latar-kertas">
+            <div class="ikon-fitur-wadah">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="kartu-judul-kecil">Progres yang mudah dibaca</h3>
+            <p class="teks-tinta-pudar">
+              Lihat total minggu ini, grafik tujuh hari, dan target yang bisa Anda atur sendiri.
+            </p>
+          </div>
+
+          <!-- Kartu 3 -->
+          <div class="kartu kartu-latar-kertas">
+            <div class="ikon-fitur-wadah">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <h3 class="kartu-judul-kecil">Panduan barang sehari-hari</h3>
+            <p class="teks-tinta-pudar">
+              Cari nama barang seperti botol kecap atau baterai. Buka kartu untuk melihat cara penanganannya.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wadah demo-section">
+      <div class="kartu demo-box">
+        <div>
+          <span class="demo-kicker">Mulai kapan saja</span>
+          <h2 class="demo-judul">Kebiasaan baik dimulai dari satu catatan.</h2>
+          <p class="teks-tinta-pudar">Buat akun gratis untuk menyimpan catatan dan melihat progres rumah Anda.</p>
+        </div>
+        <div class="demo-tombol">
+          <a href="/daftar.html" class="btn btn-aksen">Buat akun gratis</a>
+          <a href="/masuk.html" class="btn btn-garis">Saya sudah punya akun</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-utama">
+    <div class="wadah">
+      <p>Pilah — Pencatat Sampah Rumah Tangga &bull; Murni HTML, CSS, JavaScript &bull; 2026</p>
+    </div>
+  </footer>
+
+  <script src="/js/tema.js"></script>
+  <script src="/js/interaktif.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "pilah-pencatat-sampah-rumah-tangga",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "node --check server.js && node --check server/server.js && node --check server/auth.js && node --check server/entri.js && node --check server/storage.js && node --check server/validasi.js",
+    "test": "node --test server/validasi.test.js"
+  }
+}

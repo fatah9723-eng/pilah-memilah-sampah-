@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panduan Memilah Sampah | Pilah</title>
+  <meta name="description" content="Panduan interaktif memilah 30+ sampah rumah tangga dengan kartu balik 3D.">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/komponen.css">
+</head>
+<body>
+  <!-- Header & Navigasi -->
+  <header class="nav-utama">
+    <div class="wadah nav-konten">
+      <a href="/dasbor.html" class="nav-merek" aria-label="Dasbor Pilah">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <span>Pilah</span>
+      </a>
+
+      <nav aria-label="Navigasi aplikasi">
+        <ul class="nav-tautan">
+          <li><a href="/dasbor.html">Dasbor</a></li>
+          <li><a href="/panduan.html" class="aktif" aria-current="page">Panduan Memilah</a></li>
+          <li><a href="/profil.html">Profil</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-aksi">
+        <button id="btn-ganti-tema" class="btn-ikon" type="button" aria-label="Ganti mode tema"></button>
+        <button id="btn-keluar-nav" class="btn btn-garis btn-sm" type="button" aria-label="Keluar dari akun">
+          Keluar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wadah" style="padding-top: var(--s5); padding-bottom: var(--s7);">
+    <div style="margin-bottom: var(--s5);">
+      <h1 style="font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 6px;">Panduan Memilah Sampah</h1>
+      <p class="teks-tinta-pudar" style="font-size: 1rem; max-width: 650px;">
+        Ketik nama barang untuk mengetahui kategori dan langkah penanganannya di rumah. Ketuk kartu untuk membalik secara 3D.
+      </p>
+    </div>
+
+    <!-- BILAH PENCARIAN CEPAT (2 KETIKAN) -->
+    <div class="wadah-pencarian">
+      <svg class="ikon-cari" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input
+        type="search"
+        id="input-cari-panduan"
+        class="kontrol-input"
+        placeholder="Ketik nama barang (contoh: botol kecap, mi instan, baterai, kulit pisang)..."
+        aria-label="Cari barang sampah"
+      >
+      <button type="button" id="btn-hapus-cari" class="btn-bersihkan-cari" aria-label="Hapus kata kunci pencarian">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- FILTER KATEGORI SAMPAH -->
+    <div class="wadah-filter-kategori" role="group" aria-label="Filter berdasarkan kategori sampah">
+      <button type="button" class="chip-filter aktif" data-kategori="semua">Semua Barang</button>
+      <button type="button" class="chip-filter" data-kategori="organik">
+        <span class="titik-warna titik-organik"></span>
+        Organik
+      </button>
+      <button type="button" class="chip-filter" data-kategori="plastik">
+        <span class="titik-warna titik-plastik"></span>
+        Plastik
+      </button>
+      <button type="button" class="chip-filter" data-kategori="kertas">
+        <span class="titik-warna titik-kertas"></span>
+        Kertas
+      </button>
+      <button type="button" class="chip-filter" data-kategori="kacaLogam">
+        <span class="titik-warna titik-kacaLogam"></span>
+        Kaca & Logam
+      </button>
+      <button type="button" class="chip-filter" data-kategori="b3">
+        <span class="titik-warna titik-b3"></span>
+        B3 (Berbahaya)
+      </button>
+    </div>
+
+    <!-- STATUS HASIL CARI -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--s4);">
+      <span id="jumlah-ditemukan" class="teks-tinta-pudar" style="font-size:0.9rem; font-weight:600;">32 barang</span>
+      <span class="teks-lumut" style="font-size:0.8rem; font-weight:600;">💡 Klik kartu untuk melihat tips</span>
+    </div>
+
+    <!-- GRID KARTU 3D BALIK -->
+    <div id="wadah-kartu-panduan" class="grid-panduan" aria-live="polite"></div>
+  </main>
+
+  <footer class="footer-utama">
+    <div class="wadah">
+      <p>Pilah — Pencatat Sampah Rumah Tangga &bull; Murni HTML, CSS, JavaScript &bull; 2026</p>
+    </div>
+  </footer>
+
+  <script src="/js/tema.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/panduan-data.js"></script>
+  <script src="/js/panduan.js"></script>
+</body>
+</html>
